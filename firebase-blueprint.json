@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile data including name and class.",
+      "type": "object",
+      "properties": {
+        "studentName": { "type": "string" },
+        "studentClass": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["studentName", "studentClass"]
+    },
+    "StudyPlan": {
+      "title": "Study Plan",
+      "description": "A generated study plan for a specific subject.",
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string" },
+        "level": { "type": "string" },
+        "timePerDay": { "type": "string" },
+        "objective": { "type": "string" },
+        "deadline": { "type": "string" },
+        "plan": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["subject", "plan", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles."
+    },
+    "/users/{userId}/plans/{planId}": {
+      "schema": "StudyPlan",
+      "description": "History of study plans for a user."
+    }
+  }
+}
